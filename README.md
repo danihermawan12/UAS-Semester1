@@ -22,45 +22,45 @@ Kelas : TI.22.B2
 * daftar_nilai.py
 berisi modul untuk tambah data, ubah data, cari data, hapus data
 
-  from view.input_nilai import *
+    from view.input_nilai import *
 
-  data = {}
+    data = {}
 
-  def tambah_data():
-      print("====Tambah Data====")
-      global data
-      nama = input_nama()
-      nim = input_nim()
-      nilaiTugas = input_nilaiTugas()
-      nilaiUts = input_nilaiUts()
-      nilaiUas = input_nilaiUas()
-      nilaiAkhir = (0.30 * nilaiTugas) + (0.35 * nilaiUts) + (0.35 * nilaiUas)
-      data[nama] = nim, nilaiTugas, nilaiUts, nilaiUas, nilaiAkhir
-      print("\nData Berhasil Ditambahkan!")
-      return data
+    def tambah_data():
+        print("====Tambah Data====")
+        global data
+        nama = input_nama()
+        nim = input_nim()
+        nilaiTugas = input_nilaiTugas()
+        nilaiUts = input_nilaiUts()
+        nilaiUas = input_nilaiUas()
+        nilaiAkhir = (0.30 * nilaiTugas) + (0.35 * nilaiUts) + (0.35 * nilaiUas)
+        data[nama] = nim, nilaiTugas, nilaiUts, nilaiUas, nilaiAkhir
+        print("\nData Berhasil Ditambahkan!")
+        return data
 
-  def ubah_data():
-      print("====Ubah Data====")
-      nama = input("Masukkan Nama: ")
-      if nama in data.keys():
-          nim           = input_nim()
-          nilaiTugas    = input_nilaiTugas()
-          nilaiUts      = input_nilaiUts()
-          nilaiUas      = input_nilaiUas()
-          nilaiAkhir    = (0.30 * nilaiTugas) + (0.35 * nilaiUts) + (0.35 * nilaiUas)
-          data[nama]  = nim, nilaiTugas, nilaiUts, nilaiUas, nilaiAkhir
-          print("\nData Berhasil Di Update!")
-      else:
-          print("Data tidak ditemukan!")
+    def ubah_data():
+        print("====Ubah Data====")
+        nama = input("Masukkan Nama: ")
+        if nama in data.keys():
+            nim           = input_nim()
+            nilaiTugas    = input_nilaiTugas()
+            nilaiUts      = input_nilaiUts()
+            nilaiUas      = input_nilaiUas()
+            nilaiAkhir    = (0.30 * nilaiTugas) + (0.35 * nilaiUts) + (0.35 * nilaiUas)
+            data[nama]  = nim, nilaiTugas, nilaiUts, nilaiUas, nilaiAkhir
+            print("\nData Berhasil Di Update!")
+        else:
+            print("Data tidak ditemukan!")
 
-  def hapus_data():
-      print("====Hapus Data====")
-      nama = input("Masukkan Nama:  ")
-      if nama in data.keys():
-          del data[nama]
-          print("Data",nama,"Telah dihapus!")
-      else:
-          print("Data Mahasiswa Tidak Ada".format(nama))
+    def hapus_data():
+        print("====Hapus Data====")
+        nama = input("Masukkan Nama:  ")
+        if nama in data.keys():
+            del data[nama]
+            print("Data",nama,"Telah dihapus!")
+        else:
+            print("Data Mahasiswa Tidak Ada".format(nama))
           
           
           
@@ -68,72 +68,72 @@ berisi modul untuk tambah data, ubah data, cari data, hapus data
 berisi modul untuk cetak daftar nilai, cetak hasil pencarian
 
 
-  from model.daftar_nilai import *
+    from model.daftar_nilai import *
 
-  def cetak_daftar_nilai():
-      print("====Lihat Data====")
-      if data.items():
-          print("\n Daftar Nilai Mahasiswa ")
-          print("==================================================================")
-          print("| No |     Nama     |    NIM    | Tugas |  UTS  |  UAS  |  Akhir |")
-          print("==================================================================")
-          i = 0
-          for x in data.items():
-              i += 1
-              print("| {6:2} | {0:12s} | {1:9s} | {2:5} | {3:5} | {4:5} | {5:6} |".format(x[0], x[1][0], x[1][1], x[1][2],
+    def cetak_daftar_nilai():
+        print("====Lihat Data====")
+        if data.items():
+            print("\n Daftar Nilai Mahasiswa ")
+            print("==================================================================")
+            print("| No |     Nama     |    NIM    | Tugas |  UTS  |  UAS  |  Akhir |")
+            print("==================================================================")
+            i = 0
+            for x in data.items():
+                i += 1
+                print("| {6:2} | {0:12s} | {1:9s} | {2:5} | {3:5} | {4:5} | {5:6} |".format(x[0], x[1][0], x[1][1], x[1][2],
                                                                                         x[1][3], x[1][4], i))
-          print("==================================================================")
-      else:
-          print("\n Daftar Nilai Mahasiswa ")
-          print("==================================================================")
-          print("| No |     Nama     |    NIM    | Tugas |  UTS  |  UAS  |  Akhir |")
-          print("==================================================================")
-          print("|                          TIDAK ADA DATA                        |")
-          print("==================================================================")
+            print("==================================================================")
+        else:
+            print("\n Daftar Nilai Mahasiswa ")
+            print("==================================================================")
+            print("| No |     Nama     |    NIM    | Tugas |  UTS  |  UAS  |  Akhir |")
+            print("==================================================================")
+            print("|                          TIDAK ADA DATA                        |")
+            print("==================================================================")
 
-  def cetak_hasil_pencarian():
-      print("====Cari Data====")
-      nama = input("Masukkan Nama        : ")
-      if nama in data.keys():
-          print("\n Daftar Nilai Mahasiswa ")
-          print("==============================================================")
-          print("|     Nama     |    NIM    | Tugas |  UTS  |  UAS  |  Akhir  |")
-          print("==============================================================")
-          print("| {0:12s} | {1:9s} | {2:5} | {3:5} | {4:5} | {5:6}  |"
-                .format(nama, data[nama][0], data[nama][1],data[nama][2], data[nama][3],data[nama][4]))
-          print("==============================================================")
-      else:
-          print("Data {0} Tidak Ada ".format(nama))
+    def cetak_hasil_pencarian():
+        print("====Cari Data====")
+        nama = input("Masukkan Nama        : ")
+        if nama in data.keys():
+            print("\n Daftar Nilai Mahasiswa ")
+            print("==============================================================")
+            print("|     Nama     |    NIM    | Tugas |  UTS  |  UAS  |  Akhir  |")
+            print("==============================================================")
+            print("| {0:12s} | {1:9s} | {2:5} | {3:5} | {4:5} | {5:6}  |"
+                  .format(nama, data[nama][0], data[nama][1],data[nama][2], data[nama][3],data[nama][4]))
+            print("==============================================================")
+        else:
+            print("Data {0} Tidak Ada ".format(nama))
           
           
 * input_nilai.py
 berisi modul untuk input data yang diminta pengguna untuk memasukkan data
 
 
-  def input_nama():
-      global nama
-      nama = input("Masukkan Nama anda   : ")
-      return nama
+    def input_nama():
+        global nama
+        nama = input("Masukkan Nama anda   : ")
+        return nama
 
-  def input_nim():
-      global nim
-      nim = input("Masukkan NIM         : ")
-      return nim
+    def input_nim():
+        global nim
+        nim = input("Masukkan NIM         : ")
+        return nim
 
-  def input_nilaiTugas():
-      global nilaiTugas
-      nilaiTugas = int(input("Masukkan Nilai Tugas : "))
-      return nilaiTugas
+    def input_nilaiTugas():
+        global nilaiTugas
+        nilaiTugas = int(input("Masukkan Nilai Tugas : "))
+        return nilaiTugas
 
-  def input_nilaiUts():
-      global nilaiUts
-      nilaiUts = int(input("Masukkan Nilai UTS   : "))
-      return nilaiUts
+    def input_nilaiUts():
+        global nilaiUts
+        nilaiUts = int(input("Masukkan Nilai UTS   : "))
+        return nilaiUts
 
-  def input_nilaiUas():
-      global nilaiUas
-      nilaiUas = int(input("Masukkan Nilai UAS   : "))
-      return nilaiUas
+    def input_nilaiUas():
+        global nilaiUas
+        nilaiUas = int(input("Masukkan Nilai UAS   : "))
+        return nilaiUas
       
       
       
