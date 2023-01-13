@@ -10,7 +10,7 @@ Kelas : TI.22.B2
 
 ## Link Youtube :
 
-https://www.youtube.com/watch?v=jp5uhrdhsKI
+
 
 
 
